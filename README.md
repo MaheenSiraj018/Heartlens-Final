@@ -23,7 +23,6 @@ HeartLens empowers users to upload or capture an ECG report via their smartphone
 - **Frontend**: Flutter (Dart)
 - **Backend**: Firebase (Firestore, Storage)
 - **AI Models**: Trained on annotated ECG datasets for STEMI detection and localization.
-- **Designs**: Figma (for UI/UX design and prototyping)
 
 ## 🖼️ Screenshots
 
