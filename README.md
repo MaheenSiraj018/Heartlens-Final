@@ -27,26 +27,28 @@ HeartLens empowers users to upload or capture an ECG report via their smartphone
 
 ## 🖼️ Screenshots
 
-### 1. Splash Screen
-![Splash Screen](assets/screenshots/splash.jpeg)
+<p align="center">
+  <img src="assets/screenshots/splash.jpeg" alt="Splash Screen" width="45%" />
+  <img src="assets/screenshots/home.jpeg" alt="Home Screen" width="45%" />
+</p>
+<p align="center"><b>Splash Screen</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>Home Screen</b></p>
 
-### 2. Home Screen
-![Home Screen](assets/screenshots/home.jpeg)
+<p align="center">
+  <img src="assets/screenshots/guidelines.jpeg" alt="Guidelines Screen" width="45%" />
+  <img src="assets/screenshots/exampleecg.jpeg" alt="ECG Example Gallery Screen" width="45%" />
+</p>
+<p align="center"><b>ECG Upload Guidelines</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>Example ECG Gallery</b></p>
 
-### 3. ECG Upload Guidelines Screen
-![Guidelines Screen](assets/screenshots/guidelines.jpeg)
+<p align="center">
+  <img src="assets/screenshots/upload.jpeg" alt="Upload Screen" width="45%" />
+  <img src="assets/screenshots/result.jpeg" alt="STEMI Results" width="45%" />
+</p>
+<p align="center"><b>ECG Upload</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>STEMI Results</b></p>
 
-### 4. ECG Example gallery Screen
-![ECG Example Gallery Screen](assets/screenshots/exampleecg.jpeg)
-
-### 5. ECG Upload Screen
-![Upload Screen](assets/screenshots/upload.jpeg)
-
-### 6. STEMI Results Screen
-![STEMI Results](assets/screenshots/result.jpeg)
-
-### 7. PDF Report Screen
-![PDF Report](assets/screenshots/report.jpeg)
+<p align="center">
+  <img src="assets/screenshots/report.jpeg" alt="PDF Report" width="45%" />
+</p>
+<p align="center"><b>PDF Report</b></p>
 
 > Note: All screenshots are from the prototype version of the HeartLens app and are subject to change.
 
