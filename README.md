@@ -28,25 +28,25 @@ HeartLens empowers users to upload or capture an ECG report via their smartphone
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/splash.jpeg" alt="Splash Screen" width="45%" />
-  <img src="assets/screenshots/home.jpeg" alt="Home Screen" width="45%" />
+  <img src="assets/screenshots/splash.jpeg" alt="Splash Screen" width="35%" />
+  <img src="assets/screenshots/home.jpeg" alt="Home Screen" width="35%" />
 </p>
-<p align="center"><b>Splash Screen</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>Home Screen</b></p>
+<p align="center"><b>Splash Screen</b> &nbsp;&nbsp;&nbsp; <b>Home Screen</b></p>
 
 <p align="center">
-  <img src="assets/screenshots/guidelines.jpeg" alt="Guidelines Screen" width="45%" />
-  <img src="assets/screenshots/exampleecg.jpeg" alt="ECG Example Gallery Screen" width="45%" />
+  <img src="assets/screenshots/guidelines.jpeg" alt="Guidelines Screen" width="35%" />
+  <img src="assets/screenshots/exampleecg.jpeg" alt="ECG Example Gallery Screen" width="35%" />
 </p>
-<p align="center"><b>ECG Upload Guidelines</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>Example ECG Gallery</b></p>
+<p align="center"><b>ECG Upload Guidelines</b> &nbsp;&nbsp;&nbsp; <b>Example ECG Gallery</b></p>
 
 <p align="center">
-  <img src="assets/screenshots/upload.jpeg" alt="Upload Screen" width="45%" />
-  <img src="assets/screenshots/result.jpeg" alt="STEMI Results" width="45%" />
+  <img src="assets/screenshots/upload.jpeg" alt="Upload Screen" width="35%" />
+  <img src="assets/screenshots/result.jpeg" alt="STEMI Results" width="35%" />
 </p>
-<p align="center"><b>ECG Upload</b> &nbsp;&nbsp;&nbsp;&nbsp; <b>STEMI Results</b></p>
+<p align="center"><b>ECG Upload</b> &nbsp;&nbsp;&nbsp; <b>STEMI Results</b></p>
 
 <p align="center">
-  <img src="assets/screenshots/report.jpeg" alt="PDF Report" width="45%" />
+  <img src="assets/screenshots/report.jpeg" alt="PDF Report" width="35%" />
 </p>
 <p align="center"><b>PDF Report</b></p>
 
