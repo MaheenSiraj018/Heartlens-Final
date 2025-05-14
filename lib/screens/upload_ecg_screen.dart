@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../example_ecgs.dart';
+import '../blocs/user_image_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
 
 class UploadECGScreen extends StatefulWidget {
@@ -303,6 +306,8 @@ class _UploadECGScreenState extends State<UploadECGScreen> {
 
         if (pickedFile != null) {
           setState(() => _selectedImage = File(pickedFile.path));
+          context.read<UserImageBloc>().add(UpdateImageEvent(File(pickedFile.path)));
+
           // Keep your EXACT snackbar styling
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
