@@ -2,10 +2,25 @@ import 'package:pdf/widgets.dart' as pw;
 
 pw.Widget textItem({
   required String title,
-  pw.TextStyle style = const pw.TextStyle(fontSize: 30),
+  pw.TextStyle style = const pw.TextStyle(fontSize: 10),
 }) {
   return pw.Padding(
-    padding: const pw.EdgeInsets.all(3),
+    padding: const pw.EdgeInsets.all(2),
     child: pw.Text(title, style: style),
   );
 }
+
+
+
+
+// import 'package:pdf/widgets.dart' as pw;
+//
+// pw.Widget textItem({
+//   required String title,
+//   pw.TextStyle style = const pw.TextStyle(fontSize: 30),
+// }) {
+//   return pw.Padding(
+//     padding: const pw.EdgeInsets.all(3),
+//     child: pw.Text(title, style: style),
+//   );
+// }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
 import '../data/student.dart';
 import '../utils/pdf_utils.dart';
 import 'pdf_screen.dart';
+import '../blocs/user_data_bloc.dart';
+import '../events/user_data_event.dart';
+import '../data/user_model.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({Key? key}) : super(key: key);
@@ -19,25 +23,25 @@ class ResultScreenState extends State<UserInput> {
   final TextEditingController genderController = TextEditingController();
 
   // Sample student data
-  List<Student> students = [
-    Student(
-      name: 'Sana Khan',
-      age: '45',
-      gender: 'Female',
-      ST_Segment:
-      'Elevated in Lead II, III, and aVF, indicative of possible STEMI (ST-Elevation Myocardial Infarction) localized to the inferior wall of the heart.',
-      Condition:
-      'High likelihood of Acute STEMI based on ECG data analysis.',
-      followup:
-      'Recommend blood tests, echocardiography, and continuous monitoring.',
-      lifestyle:
-      'Quit smoking, adopt a low-sodium diet, and ensure regular physical activity as guided by a healthcare professional.',
-      localization: 'Inferior wall of the heart.',
-      risk_level: 'High, Immediate medical attention is recommended.',
-      urgent_action:
-      'Seek immediate consultation with a cardiologist for further evaluation and treatment.',
-    ),
-  ];
+  // List<Student> students = [
+  //   Student(
+  //     name: 'Sana Khan',
+  //     age: '45',
+  //     gender: 'Female',
+  //     ST_Segment:
+  //     'Elevated in Lead II, III, and aVF, indicative of possible STEMI (ST-Elevation Myocardial Infarction) localized to the inferior wall of the heart.',
+  //     Condition:
+  //     'High likelihood of Acute STEMI based on ECG data analysis.',
+  //     followup:
+  //     'Recommend blood tests, echocardiography, and continuous monitoring.',
+  //     lifestyle:
+  //     'Quit smoking, adopt a low-sodium diet, and ensure regular physical activity as guided by a healthcare professional.',
+  //     localization: 'Inferior wall of the heart.',
+  //     risk_level: 'High, Immediate medical attention is recommended.',
+  //     urgent_action:
+  //     'Seek immediate consultation with a cardiologist for further evaluation and treatment.',
+  //   ),
+  // ];
 
   void openPdfViewer() {
     Navigator.push(
@@ -79,8 +83,28 @@ class ResultScreenState extends State<UserInput> {
       return;
     }
 
+    context.read<UserDataBloc>().add(AddUserData(User(name: name, age: age, gender: gender)));
+
     // Generate PDF and navigate to PDF viewer
-    pdfFile = await PdfUtils.generateAdvancedPDF(students);
+    pdfFile = await PdfUtils.generateAdvancedPDF([
+      Student(
+        name: name,
+        age: age,
+        gender: gender,
+        ST_Segment:
+        'Elevated in Lead II, III, and aVF, indicative of possible STEMI (ST-Elevation Myocardial Infarction) localized to the inferior wall of the heart.',
+        Condition:
+        'High likelihood of Acute STEMI based on ECG data analysis.',
+        followup:
+        'Recommend blood tests, echocardiography, and continuous monitoring.',
+        lifestyle:
+        'Quit smoking, adopt a low-sodium diet, and ensure regular physical activity as guided by a healthcare professional.',
+        localization: 'Inferior wall of the heart.',
+        risk_level: 'High, Immediate medical attention is recommended.',
+        urgent_action:
+        'Seek immediate consultation with a cardiologist for further evaluation and treatment.',
+      )
+    ]);
     openPdfViewer();
   }
 
@@ -225,6 +249,121 @@ class CustomInputField extends StatelessWidget {
   }
 }
 
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'dart:io';
+// import '../data/student.dart';
+// import '../utils/pdf_utils.dart';
+// import 'pdf_screen.dart';
+// import '../blocs/user_data_bloc.dart';
+// import '../events/user_data_event.dart';
+// import '../data/user_model.dart';
+//
+// class UserInputScreen extends StatefulWidget {
+//   const UserInputScreen({Key? key}) : super(key: key);
+//
+//   @override
+//   State<UserInputScreen> createState() => _UserInputScreenState();
+// }
+//
+// class _UserInputScreenState extends State<UserInputScreen> {
+//   final TextEditingController nameController = TextEditingController();
+//   final TextEditingController ageController = TextEditingController();
+//   final TextEditingController genderController = TextEditingController();
+//
+//   void _submitData(BuildContext context) {
+//     final name = nameController.text.trim();
+//     final age = ageController.text.trim();
+//     final gender = genderController.text.trim();
+//
+//     if (name.isEmpty || age.isEmpty || gender.isEmpty) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         const SnackBar(
+//           content: Text("All fields are required!"),
+//           backgroundColor: Color(0xFFD23939),
+//         ),
+//       );
+//       return;
+//     }
+//
+//     final user = User(name: name, age: age, gender: gender);
+//     context.read<UserDataBloc>().add(AddUserData(user));
+//
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       const SnackBar(
+//         content: Text("Data submitted successfully!"),
+//         backgroundColor: Color(0xFF1B0E0E),
+//       ),
+//     );
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: const Color(0xFFFCF8F8),
+//       appBar: AppBar(
+//         backgroundColor: const Color(0xFFFFD1D1),
+//         title: const Text(
+//           'Enter User Data',
+//           style: TextStyle(color: Color(0xFF1B0E0E)),
+//         ),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           children: [
+//             CustomInputField(controller: nameController, placeholder: "Name"),
+//             const SizedBox(height: 16),
+//             CustomInputField(controller: ageController, placeholder: "Age"),
+//             const SizedBox(height: 16),
+//             CustomInputField(controller: genderController, placeholder: "Gender"),
+//             const SizedBox(height: 24),
+//             ElevatedButton(
+//               onPressed: () => _submitData(context),
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: const Color(0xFFD23939),
+//                 minimumSize: const Size(double.infinity, 48),
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(12),
+//                 ),
+//               ),
+//               child: const Text("Submit", style: TextStyle(color: Colors.white)),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class CustomInputField extends StatelessWidget {
+//   final String placeholder;
+//   final TextEditingController controller;
+//
+//   const CustomInputField({Key? key, required this.placeholder, required this.controller}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return TextField(
+//       controller: controller,
+//       decoration: InputDecoration(
+//         contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+//         filled: true,
+//         fillColor: const Color(0xFFF3E7E7),
+//         hintText: placeholder,
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(12),
+//           borderSide: BorderSide.none,
+//         ),
+//       ),
+//       style: const TextStyle(
+//         color: Color(0xFF1B0E0E),
+//         fontSize: 16,
+//       ),
+//     );
+//   }
+// }
 
 
 // import 'package:flutter/material.dart';

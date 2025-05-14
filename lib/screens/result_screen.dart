@@ -178,7 +178,11 @@ class ResultScreenState extends State<ResultScreen> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
-                    onPressed: viewLocalization,
+    onPressed: ()  {
+    Navigator.pushNamed(context, '/localization');
+    }
+                    ,
+
                     child: const Text(
                       'View Localization',
                       style: TextStyle(
@@ -199,7 +203,7 @@ class ResultScreenState extends State<ResultScreen> {
                       ),
                     ),
                     onPressed: ()  {
-                      Navigator.pushReplacementNamed(context, '/input');
+                      Navigator.pushNamed(context, '/input');
 
                       // pdfFile = await PdfUtils.generateAdvancedPDF(students);
                       // openPdfViewer();
