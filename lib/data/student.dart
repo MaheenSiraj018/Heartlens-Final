@@ -24,6 +24,8 @@ String risk_level;
 String urgent_action;
 String followup;
 String lifestyle;
+String whatThisMeans; // Add this field
+
 
 
 Student({
@@ -36,6 +38,7 @@ Student({
   required this.lifestyle,
   required this.localization,
   required this.risk_level,
-  required this.urgent_action
+  required this.urgent_action,
+  required this.whatThisMeans,
 });
 }

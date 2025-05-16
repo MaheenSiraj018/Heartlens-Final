@@ -7,6 +7,10 @@ import 'pdf_screen.dart';
 import '../blocs/user_data_bloc.dart';
 import '../events/user_data_event.dart';
 import '../data/user_model.dart';
+import '../data/report_model.dart';
+import '../blocs/report_generator_bloc.dart';
+import '../events/report_generator_event.dart';
+import '../states/report_generator_state.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({Key? key}) : super(key: key);
@@ -72,7 +76,6 @@ class ResultScreenState extends State<UserInput> {
       },
     );
   }
-
   Future<void> _validateAndProceed() async {
     final name = nameController.text.trim();
     final age = ageController.text.trim();
@@ -83,30 +86,75 @@ class ResultScreenState extends State<UserInput> {
       return;
     }
 
+    // Save user data to BLoC
     context.read<UserDataBloc>().add(AddUserData(User(name: name, age: age, gender: gender)));
 
-    // Generate PDF and navigate to PDF viewer
-    pdfFile = await PdfUtils.generateAdvancedPDF([
-      Student(
-        name: name,
-        age: age,
-        gender: gender,
-        ST_Segment:
-        'Elevated in Lead II, III, and aVF, indicative of possible STEMI (ST-Elevation Myocardial Infarction) localized to the inferior wall of the heart.',
-        Condition:
-        'High likelihood of Acute STEMI based on ECG data analysis.',
-        followup:
-        'Recommend blood tests, echocardiography, and continuous monitoring.',
-        lifestyle:
-        'Quit smoking, adopt a low-sodium diet, and ensure regular physical activity as guided by a healthcare professional.',
-        localization: 'Inferior wall of the heart.',
-        risk_level: 'High, Immediate medical attention is recommended.',
-        urgent_action:
-        'Seek immediate consultation with a cardiologist for further evaluation and treatment.',
-      )
-    ]);
-    openPdfViewer();
+    try {
+      // Get the latest Gemini report from BLoC state
+      final reportState = context.read<ReportGeneratorBloc>().state;
+
+      if (reportState is ReportGeneratorSuccess) {
+        // Generate PDF with dynamic Gemini data + user input
+        debugPrint('Gemini Report: ${reportState.report}');
+
+        pdfFile = await PdfUtils.generateAdvancedPDF(
+          [Student( // Pass as named parameter
+            name: name,
+            age: age,
+            gender: gender,
+            ST_Segment: reportState.report['st_segment'] ?? 'No ST segment data',
+            Condition: reportState.report['condition'] ?? 'No diagnosis available',
+            followup: reportState.report['followup'] ?? 'No follow-up recommendations',
+            lifestyle: reportState.report['lifestyle'] ?? 'No lifestyle suggestions',
+            localization: reportState.report['localization'] ?? 'Location not specified',
+            risk_level: reportState.report['risk_level'] ?? 'Risk level not determined',
+            urgent_action: reportState.report['urgent_action'] ?? 'No urgent actions recommended',
+            whatThisMeans: reportState.report['what_this_means'] ?? 'No explanation available', // Add this
+          ),
+       ] );
+
+        openPdfViewer();
+      } else {
+        _showErrorDialog("Medical analysis not ready. Please try again.");
+      }
+    } catch (e) {
+      _showErrorDialog("Failed to generate report: ${e.toString()}");
+    }
   }
+  // Future<void> _validateAndProceed() async {
+  //   final name = nameController.text.trim();
+  //   final age = ageController.text.trim();
+  //   final gender = genderController.text.trim();
+  //
+  //   if (name.isEmpty || age.isEmpty || gender.isEmpty) {
+  //     _showErrorDialog("All fields are required. Please fill in all the details.");
+  //     return;
+  //   }
+  //
+  //   context.read<UserDataBloc>().add(AddUserData(User(name: name, age: age, gender: gender)));
+  //
+  //   // Generate PDF and navigate to PDF viewer
+  //   pdfFile = await PdfUtils.generateAdvancedPDF([
+  //     Student(
+  //       name: name,
+  //       age: age,
+  //       gender: gender,
+  //       ST_Segment:
+  //       'Elevated in Lead II, III, and aVF, indicative of possible STEMI (ST-Elevation Myocardial Infarction) localized to the inferior wall of the heart.',
+  //       Condition:
+  //       'High likelihood of Acute STEMI based on ECG data analysis.',
+  //       followup:
+  //       'Recommend blood tests, echocardiography, and continuous monitoring.',
+  //       lifestyle:
+  //       'Quit smoking, adopt a low-sodium diet, and ensure regular physical activity as guided by a healthcare professional.',
+  //       localization: 'Inferior wall of the heart.',
+  //       risk_level: 'High, Immediate medical attention is recommended.',
+  //       urgent_action:
+  //       'Seek immediate consultation with a cardiologist for further evaluation and treatment.',
+  //     )
+  //   ]);
+  //   openPdfViewer();
+  // }
 
   @override
   Widget build(BuildContext context) {

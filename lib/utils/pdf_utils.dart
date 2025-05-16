@@ -106,6 +106,7 @@ class PdfUtils {
   }
 
   static Future<File> generateAdvancedPDF(List<Student> students) async {
+
     final pdf = pw.Document();
 
     final ByteData bytesImage =
@@ -179,6 +180,9 @@ class PdfUtils {
                 textItem(title: students[0].localization, style: textStyle1),
                 textItem(title: 'Risk Level:', style: textStyle2),
                 textItem(title: students[0].risk_level, style: textStyle1),
+                pw.SizedBox(height:10),
+                textItem(title: 'What this Means', style: textStyle3),
+                textItem(title: students[0].whatThisMeans, style: textStyle1),
                 pw.SizedBox(height:10),
 
                 textItem(title: 'Recommendations', style: textStyle3),

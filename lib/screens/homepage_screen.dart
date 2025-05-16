@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:report_heartlens/screens/personalization_input.dart';
 import 'upload_ecg_screen.dart';
 
 class HomePageScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class HomePageScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Main Heading
-            SizedBox(height:25),
+            SizedBox(height:20),
             RichText(
               text: const TextSpan(
                 style: TextStyle(
@@ -34,7 +35,7 @@ class HomePageScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 7),
 
             // First Card
             _buildCard(
@@ -50,7 +51,7 @@ class HomePageScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 8),
                   const Text(
                     'Enhance Your Heart Health!',
                     style: TextStyle(
@@ -59,7 +60,7 @@ class HomePageScreen extends StatelessWidget {
                       color: Colors.black, // Text color updated to black
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 5),
                   const Text(
                     'Discover benefits of ECG analysis',
                     style: TextStyle(
@@ -71,7 +72,7 @@ class HomePageScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 14),
 
             // Second Card
             _buildCard(
@@ -86,7 +87,7 @@ class HomePageScreen extends StatelessWidget {
                       color: Colors.black, // Text color updated to black
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   // Organizing feature cards in rows
                   Column(
                     children: [
@@ -99,7 +100,7 @@ class HomePageScreen extends StatelessWidget {
                               Icons.monitor_heart, 'Effortless ECG Analysis'),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 10),
                       // Second Row of Feature Cards
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +115,7 @@ class HomePageScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 14),
 
             // Third Card
             _buildCard(
@@ -137,7 +138,7 @@ class HomePageScreen extends StatelessWidget {
                       const SizedBox(width: 12),
                       const Expanded(
                         child: Text(
-                          'Cardiologists: Analyze ECGs effectively and gain insights to support diagnosis.',
+                          'Cardiologists: Efficient ECG analysis and diagnostic insights.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black, // Text color updated to black
@@ -146,7 +147,7 @@ class HomePageScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
                       Icon(Icons.health_and_safety,
@@ -154,7 +155,7 @@ class HomePageScreen extends StatelessWidget {
                       const SizedBox(width: 12),
                       const Expanded(
                         child: Text(
-                          'Patients: Stay informed about your heart health with an easy-to-use platform.',
+                          'Patients: Monitor your heart health easily.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black, // Text color updated to black
@@ -166,7 +167,7 @@ class HomePageScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 14),
 
             // Perform ECG Analysis Button
             Center(
@@ -191,13 +192,46 @@ class HomePageScreen extends StatelessWidget {
                 child: const Text(
                   'Upload ECG for Analysis',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
               ),
             ),
+            const SizedBox(height: 14),
+
+            // Perform ECG Analysis Button
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Leave this empty for now
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PersonalizationInputScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFD23939),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
+                  ),
+                ),
+                child: const Text(
+                  'Get Personalized Recommendations',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
