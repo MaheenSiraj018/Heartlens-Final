@@ -20,16 +20,9 @@ Unlike generic ECG apps, Sanarex is clinically grounded through our exclusive co
 - **STEMI Detection**: AI-powered analysis to determine the presence of STEMI.
 - **Localization**: Highlights the region of the heart affected.
 - **PDF Report Generation**: Generates easy to understand detailed diagnostic insights and recommendations in a downloadable PDF format using Gemini.
-- **Personalized Heart Health assisstant:** Based upon users's input, give personalized recommendations for diet, exercises and lifestyle tips.
 - **User-Friendly Interface**: Intuitive screens with clear instructions and sample guides.
 
-## Usage and Future Plans
-
-Download the app-release.apk, and use ECG images sample given below for STEMI detection. Our current ML model provides preliminary analysis while we're actively collaborating with NICVD to integrate real patient datasets for higher precision in future updates.
-
-<p align="center">
-  <img src="assets/ecg_img.jpeg" alt="Splash Screen" width="55%" />
-</p>## 🛠️ Tools & Technologies
+## 🛠️ Tools & Technologies
 
 - **Frontend**: Flutter (Dart)
 - **Backend**: Firebase (Firestore, Storage)
@@ -59,13 +52,6 @@ Download the app-release.apk, and use ECG images sample given below for STEMI de
   <img src="assets/screenshots/report.jpeg" alt="PDF Report" width="35%" />
 </p>
 <p align="center"><b>PDF Report</b></p>
-
-> Note: All screenshots are from the prototype version of the HeartLens app and are subject to change.
-
-## 📂 Additional Resources
-
-For detailed project and financial information:
-- [📄 Download Detailed Pitch Deck](./assets/Solution-challenge-heartlens-one.pdf) (Comprehensive project overview)
 
 
 ## 🚀 Getting Started (Coming Soon)
