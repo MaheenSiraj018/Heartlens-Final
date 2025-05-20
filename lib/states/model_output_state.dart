@@ -1,4 +1,3 @@
-// lib/bloc/model_output/model_output_state.dart
 import 'package:equatable/equatable.dart';
 import '../../models/ecg_analysis_result.dart';
 
