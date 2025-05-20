@@ -6,8 +6,17 @@ class ECGPreprocessor {
   static const List<Map<String, int>> _leadCoordinates = [
     {'x': 150, 'y': 300, 'w': 493, 'h': 300},   // Lead I
     {'x': 646, 'y': 300, 'w': 489, 'h': 300},   // Lead II
-    // ... add all 13 lead coordinates
-  ];
+    {'x': 1140, 'y': 300, 'w': 485, 'h': 300},   // Lead III
+    {'x': 1630 , 'y': 300, 'w': 495, 'h': 300},   // Lead IV
+    {'x': 150, 'y': 600, 'w': 493, 'h': 300},   // Lead V
+    {'x': 646, 'y': 600, 'w': 489, 'h': 300},   // Lead VI
+    {'x': 1140, 'y': 600, 'w': 485, 'h': 300},   // Lead VII
+    {'x': 1630, 'y': 600, 'w': 495, 'h': 300},   // Lead VIII
+    {'x': 150, 'y': 900, 'w': 493, 'h': 300},   // Lead IX
+    {'x': 646, 'y': 900, 'w': 489, 'h': 300},   // Lead X
+    {'x': 1140, 'y': 900, 'w': 485, 'h': 300},   // Lead XI
+    {'x': 1630, 'y': 900, 'w': 495, 'h': 300},   // Lead XII
+      ];
 
   Future<Map<String, dynamic>> processECGImage(File imageFile) async {
     try {
@@ -142,7 +151,4 @@ class ECGPreprocessor {
     return file.path;
   }
 
-  void dispose() {
-    // Cleanup resources if needed
-  }
 }
